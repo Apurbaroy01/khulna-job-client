@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { IoMdEye, IoMdEyeOff } from 'react-icons/io';
+import { Link } from 'react-router-dom';
 
 const Login = () => {
     const [icon, setIcon]=useState();
@@ -52,6 +53,9 @@ const Login = () => {
                         >
                             Login
                         </button>
+                        <div className="text-center items-center text-sm mt-2">
+                            <p  className="text-white">Don't have an account? <Link to={'/register'} className='text-red-300 hover:underline'>Sign up</Link></p>
+                        </div>
                     </form>
                 </div>
             </div>
