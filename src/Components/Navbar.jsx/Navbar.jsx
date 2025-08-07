@@ -23,7 +23,7 @@ const Navbar = () => {
                         <li><a>Item 3</a></li>
                     </ul>
                 </div>
-                <Link to={'/'}><a className="btn btn-ghost text-2xl">NextHire</a></Link>
+                <Link to={'/'}><p className="btn btn-ghost text-2xl">NextHire</p></Link>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
@@ -41,8 +41,8 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end gap-3 **:text-white">
-                <Link to={'/register'}><a className="btn bg-transparent hover:bg-cyan-500">Register</a></Link>
-                <Link to={'/login'}><a className="btn bg-transparent hover:bg-red-500">Login</a></Link>
+                <Link to={'/register'}><p className="btn bg-transparent hover:bg-cyan-500">Register</p></Link>
+                <Link to={'/login'}><p className="btn bg-transparent hover:bg-red-500">Login</p></Link>
             </div>
         </div>
     );

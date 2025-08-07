@@ -1,8 +1,36 @@
 import React, { useState } from 'react';
+import { useContext } from 'react';
 import { IoMdEye, IoMdEyeOff } from 'react-icons/io';
+import AuthConText from '../../Firebase/Context/AuthConText';
 
 const Register = () => {
-    const [icon, setIcon] = useState();
+    const {createUser}=useContext(AuthConText)
+
+    const [icon, setIcon] = useState(false);
+
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        const form = e.target;
+        const email=form.email.value;
+        const password=form.password.value;
+        const checkbox=form.checkbox.checked;
+
+
+        if(!checkbox){
+            console.log("Please accept the terms and conditions ")
+            return ;
+        }
+
+        console.log(email,password,checkbox)
+
+        createUser(email,password)
+        .then((result)=>{
+            console.log(result)
+        })
+        .catch((error)=>{
+            console.log(error.massege)
+        })
+    }
     return (
         <div className="hero bg-transparent min-h-screen">
             <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:20px_20px] pointer-events-none"></div>
@@ -20,11 +48,11 @@ const Register = () => {
 
                 {/* Form Section */}
                 <div className="w-full max-w-sm bg-white/20 p-8 rounded-xl shadow-lg border border-white/30">
-                    <form>
+                    <form onSubmit={handleSubmit}>
                         <div className="mb-4">
                             <label className="block text-white/90 mb-1">Email</label>
                             <input
-                                type="email"
+                                type="email" name='email'
                                 placeholder="Enter your email"
                                 className="w-full px-4 py-2 rounded-lg bg-white/70 text-black focus:outline-none focus:ring-2 focus:ring-blue-400"
                             />
@@ -32,7 +60,7 @@ const Register = () => {
                         <div className="mb-4 relative">
                             <label className="block text-white/90 mb-1">Password</label>
                             <input
-                                type={icon ? 'text' : 'password'}
+                                type={icon ? 'text' : 'password'} name='password'
                                 placeholder="Enter your password"
                                 className="w-full px-4 py-2 rounded-lg bg-white/70 text-black focus:outline-none focus:ring-2 focus:ring-blue-400"
                             />
@@ -47,7 +75,7 @@ const Register = () => {
 
                         
                             <label className="label">
-                                <input type="checkbox"  className="checkbox" />
+                                <input type="checkbox" name='checkbox'  className="checkbox" />
                                 I accept terms and condition
                             </label>
 
