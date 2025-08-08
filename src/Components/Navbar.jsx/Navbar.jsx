@@ -1,7 +1,22 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import AuthConText from "../../Firebase/Context/AuthConText";
 
 
 const Navbar = () => {
+    const { user, logout } = useContext(AuthConText);
+
+    const hendleLogOut=()=>{
+        logout()
+        .then(()=>{
+            console.log('SignOut SuccessFully')
+        })
+        .catch((error)=>{
+            console.log(error.message)
+        });
+    };
+
+
     return (
         <div className="fixed navbar bg-white/10 text-white shadow-sm">
             <div className="navbar-start">
@@ -41,8 +56,15 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end gap-3 **:text-white">
-                <Link to={'/register'}><p className="btn bg-transparent hover:bg-cyan-500">Register</p></Link>
-                <Link to={'/login'}><p className="btn bg-transparent hover:bg-red-500">Login</p></Link>
+                {/* <Link to={'/register'}><p className="btn bg-transparent hover:bg-cyan-500">Register</p></Link>
+                <Link to={'/login'}><p className="btn bg-transparent hover:bg-red-500">Login</p></Link> */}
+
+                {
+                    user ? <p onClick={hendleLogOut} className="btn bg-transparent hover:bg-red-500">LogOut</p> : <>
+                        <Link to={'/register'}><p className="btn bg-transparent hover:bg-cyan-500">Register</p></Link>
+                        <Link to={'/login'}><p className="btn bg-transparent hover:bg-red-500">Login</p></Link>
+                    </>
+                }
             </div>
         </div>
     );

@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { IoMdEye, IoMdEyeOff } from 'react-icons/io';
 import AuthConText from '../../Firebase/Context/AuthConText';
+import { useNavigate } from 'react-router-dom';
 
 const Register = () => {
     const { createUser } = useContext(AuthConText);
@@ -11,6 +12,8 @@ const Register = () => {
     const [emailError, setEmailError] = useState("");
     const [passwordError, setPasswordError] = useState("");
     const [termsError, setTermsError] = useState("");
+
+    const Navigate = useNavigate()
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -41,6 +44,7 @@ const Register = () => {
             .then((result) => {
                 console.log("User created:", result.user);
                 form.reset();
+                Navigate('/')
             })
             .catch((error) => {
                 console.log("Firebase Error:", error.message);
@@ -75,7 +79,7 @@ const Register = () => {
                                 className={`w-full px-4 py-2 rounded-lg bg-white/70 text-black focus:outline-none focus:ring-2 border
                                 ${emailError ? "border-red-400 focus:ring-red-400" : "border-transparent focus:ring-blue-400"}`}
                             />
-                            
+
                         </div>
 
                         {/* Password Field */}

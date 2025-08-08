@@ -1,29 +1,33 @@
 import React, { useContext, useState } from 'react';
 import { IoMdEye, IoMdEyeOff } from 'react-icons/io';
-import { Link } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 import AuthConText from '../../Firebase/Context/AuthConText';
 
 const Login = () => {
-    const {signIn}=useContext(AuthConText)
+    const { signIn } = useContext(AuthConText)
     const [icon, setIcon] = useState('');
-    const [error, setError]=useState('')
+    const [error, setError] = useState('')
+
+    const Navigate = useNavigate()
 
     const handleSubmit = (e) => {
         e.preventDefault()
         const form = e.target;
-        const email=form.email.value;
-        const password=form.password.value;
-       
-        console.log(email,password)
+        const email = form.email.value;
+        const password = form.password.value;
+
+        console.log(email, password)
 
         signIn(email, password)
-        .then((result)=>{
-            console.log(result)
-        })
-        .catch((error)=>{
-            console.log(error.message)
-            setError('error')
-        });
+            .then((result) => {
+                console.log(result)
+                form.reset()
+                Navigate('/')
+            })
+            .catch((error) => {
+                console.log(error.message)
+                setError('error')
+            });
     }
     return (
         <div className="hero bg-transparent min-h-screen">
