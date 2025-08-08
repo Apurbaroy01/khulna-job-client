@@ -1,10 +1,13 @@
 import React, { useContext, useState } from 'react';
 import { IoMdEye, IoMdEyeOff } from 'react-icons/io';
-import { Link, Navigate, useNavigate } from 'react-router-dom';
+import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
 import AuthConText from '../../Firebase/Context/AuthConText';
 
 const Login = () => {
     const { signIn } = useContext(AuthConText)
+    const location=useLocation();
+    console.log('signin',location)
+    const from = location.state || '/'
     const [icon, setIcon] = useState('');
     const [error, setError] = useState('')
 
@@ -22,7 +25,7 @@ const Login = () => {
             .then((result) => {
                 console.log(result)
                 form.reset()
-                Navigate('/')
+                Navigate(from)
             })
             .catch((error) => {
                 console.log(error.message)
