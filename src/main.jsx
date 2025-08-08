@@ -13,10 +13,12 @@ import AuthProvider from './Firebase/Context/AuthProvider';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <BackroundColor>
-      <AuthProvider>
+    <AuthProvider>
+      <BackroundColor>
+
         <RouterProvider router={router} />
-      </AuthProvider>
-    </BackroundColor>
+
+      </BackroundColor>
+    </AuthProvider>
   </StrictMode>,
 )

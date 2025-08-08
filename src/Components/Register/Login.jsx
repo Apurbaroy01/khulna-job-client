@@ -1,9 +1,12 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { IoMdEye, IoMdEyeOff } from 'react-icons/io';
 import { Link } from 'react-router-dom';
+import AuthConText from '../../Firebase/Context/AuthConText';
 
 const Login = () => {
-    const [icon, setIcon] = useState();
+    const {signIn}=useContext(AuthConText)
+    const [icon, setIcon] = useState('');
+    const [error, setError]=useState('')
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -11,8 +14,16 @@ const Login = () => {
         const email=form.email.value;
         const password=form.password.value;
        
-
         console.log(email,password)
+
+        signIn(email, password)
+        .then((result)=>{
+            console.log(result)
+        })
+        .catch((error)=>{
+            console.log(error.message)
+            setError('error')
+        });
     }
     return (
         <div className="hero bg-transparent min-h-screen">
@@ -37,7 +48,7 @@ const Login = () => {
                             <input
                                 type="email" name='email'
                                 placeholder="Enter your email"
-                                className="w-full px-4 py-2 rounded-lg bg-white/70 text-black focus:outline-none focus:ring-2 focus:ring-blue-400"
+                                className={`w-full px-4 py-2 rounded-lg bg-white/70 text-black focus:outline-none focus:ring-2 focus:ring-blue-400 ${error && ' border border-red-500'}`}
                             />
                         </div>
                         <div className="mb-4 relative">
@@ -45,7 +56,7 @@ const Login = () => {
                             <input
                                 type={icon ? 'text' : 'password'} name='password'
                                 placeholder="Enter your password"
-                                className="w-full px-4 py-2 rounded-lg bg-white/70 text-black focus:outline-none focus:ring-2 focus:ring-blue-400"
+                                className={`w-full px-4 py-2 rounded-lg bg-white/70 text-black focus:outline-none focus:ring-2 focus:ring-blue-400 ${error && ' border border-red-500'}`}
                             />
                             <p className='absolute right-4 top-10  text-xl' onClick={() => setIcon(!icon)}>
                                 {
