@@ -6,10 +6,7 @@ const Navbar = () => {
     const { user, logout } = useContext(AuthConText);
     const navigate = useNavigate(); // ✅ useNavigate hook
 
-    const link=[
-        <Link to={"/"}><p className=" text-xl hover:underline">Home</p></Link>,
-        <Link to={"/application"} className=" text-xl hover:underline ">Application</Link>
-    ]
+
 
     const hendleLogOut = () => {
         logout()
@@ -52,7 +49,8 @@ const Navbar = () => {
                         tabIndex={0}
                         className="menu menu-sm dropdown-content bg-base-100 rounded-box z-10 mt-3 w-52 p-2 shadow text-sm"
                     >
-                        {link}
+                        <Link to={"/"}><p className=" text-xl hover:underline">Home</p></Link>
+                        <Link to={"/application"} className=" text-xl hover:underline ">Application</Link>
                     </ul>
                 </div>
                 {/* Logo */}
@@ -64,7 +62,8 @@ const Navbar = () => {
             {/* Navbar Center */}
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1 gap-4 ">
-                    {link}
+                    <Link to={"/"}><p className=" text-xl hover:underline">Home</p></Link>
+                    <Link to={"/application"} className=" text-xl hover:underline ">Application</Link>
                 </ul>
             </div>
 
@@ -79,7 +78,7 @@ const Navbar = () => {
                         >
                             LogOut
                         </p>
-                        
+
                     </>
                 ) : (
                     <>
