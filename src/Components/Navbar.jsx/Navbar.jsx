@@ -6,6 +6,11 @@ const Navbar = () => {
     const { user, logout } = useContext(AuthConText);
     const navigate = useNavigate(); // ✅ useNavigate hook
 
+    const link=[
+        <Link to={"/"}><p className=" text-xl hover:underline">Home</p></Link>,
+        <Link to={"/application"} className=" text-xl hover:underline ">Application</Link>
+    ]
+
     const hendleLogOut = () => {
         logout()
             .then(() => {
@@ -18,7 +23,7 @@ const Navbar = () => {
     };
 
     return (
-        <div className="fixed navbar bg-white/10 text-white shadow-sm px-4 sm:px-6">
+        <div className=" navbar bg-white/10 text-white shadow-sm px-4 sm:px-6">
             {/* Navbar Start */}
             <div className="navbar-start">
                 {/* Mobile Menu Button */}
@@ -47,15 +52,7 @@ const Navbar = () => {
                         tabIndex={0}
                         className="menu menu-sm dropdown-content bg-base-100 rounded-box z-10 mt-3 w-52 p-2 shadow text-sm"
                     >
-                        <li><Link to="/">Home</Link></li>
-                        <li>
-                            <a>Parent</a>
-                            <ul className="p-2">
-                                <li><a>Submenu 1</a></li>
-                                <li><a>Submenu 2</a></li>
-                            </ul>
-                        </li>
-                        <li><a>Contact</a></li>
+                        {link}
                     </ul>
                 </div>
                 {/* Logo */}
@@ -66,18 +63,8 @@ const Navbar = () => {
 
             {/* Navbar Center */}
             <div className="navbar-center hidden lg:flex">
-                <ul className="menu menu-horizontal px-1 text-base">
-                    <li><Link to="/">Home</Link></li>
-                    <li>
-                        <details>
-                            <summary>Parent</summary>
-                            <ul className="p-2">
-                                <li><a>Submenu 1</a></li>
-                                <li><a>Submenu 2</a></li>
-                            </ul>
-                        </details>
-                    </li>
-                    <li><a>Contact</a></li>
+                <ul className="menu menu-horizontal px-1 gap-4 ">
+                    {link}
                 </ul>
             </div>
 
