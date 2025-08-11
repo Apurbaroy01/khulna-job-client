@@ -8,6 +8,9 @@ import JobDetails from "./Components/JobComponents/JobDetails";
 import PrivetRouter from "./Components/PrivetRouter/PrivetRouter";
 import JobApply from "./Components/JobComponents/JobApply";
 import Application from "./Components/Application/Application";
+import AddJob from "./Components/MyPost.jsx/AddJob";
+import MyPost from "./Components/MyPost.jsx/MyPost";
+
 
 
 
@@ -44,8 +47,16 @@ const router = createBrowserRouter([
       },
       {
         path: 'application',
-        // loader: () => fetch('http://localhost:5000/Application-jobs'),
         element: <Application></Application>
+      },
+      
+      {
+        path: 'addjob',
+        element: <AddJob></AddJob>
+      },
+      {
+        path: 'mypost',
+        element: <MyPost></MyPost>
       },
       
 

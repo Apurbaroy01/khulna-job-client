@@ -62,7 +62,8 @@ const Navbar = () => {
             {/* Navbar Center */}
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1 gap-4 ">
-                    <Link to={"/"}><p className=" text-xl hover:underline">Home</p></Link>
+                    <Link to={"/addjob"}><p className=" text-xl hover:underline">Add-Job</p></Link>
+                    <Link to={"/mypost"}><p className=" text-xl hover:underline">My post</p></Link>
                     <Link to={"/application"} className=" text-xl hover:underline ">Application</Link>
                 </ul>
             </div>
