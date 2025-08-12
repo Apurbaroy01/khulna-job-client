@@ -40,8 +40,9 @@ const Navbar = () => {
                         <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 p-3 shadow-lg bg-[#1e293b] rounded-lg w-52 gap-2  text-white">
                             {user && (
                                 <>
-                                    <Link to="/" className="hover:text-cyan-400">Home</Link>
-                                    <Link to="/application" className="hover:text-cyan-400">Application</Link>
+                                    <Link to="/addjob" className="hover:text-cyan-400 transition-colors flex items-center"><IoIosAddCircle /> <p>Add Job</p></Link>
+                                    <Link to="/mypost" className="hover:text-cyan-400 transition-colors flex items-center"><MdOutlinePostAdd /> <p>My Post</p></Link>
+                                    <Link to="/application" className="hover:text-cyan-400 transition-colors flex items-center"><IoIosSend /> <p>Application</p></Link>
                                 </>
                             )}
                         </ul>
