@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import UseAuth from '../Hooks/UseAuth';
+import { Link } from 'react-router-dom';
 
 const MyPost = () => {
     const [job, setJob] = useState([]);
@@ -26,21 +27,25 @@ const MyPost = () => {
                         <th>Name</th>
                         <th>Job</th>
                         <th>Time & date</th>
+                        <th>count</th>
                         <th></th>
                     </tr>
                 </thead>
                 <tbody>
                     {
                         job.map(application =>
-                            <tr key={application._id}>
+                            <tr key={application._id} className='border-b border-white/20'>
 
                                 <td>
                                     <div className="flex items-center gap-3">
                                         <div className="avatar">
                                             <div className="mask mask-squircle h-12 w-12">
                                                 <img
-                                                    src={application.company_logo}
-                                                    alt="logo" />
+                                                    src={application.company_logo || "logo"}
+                                                    alt="logo" 
+                                                    
+                                                    />
+                                                    
                                             </div>
                                         </div>
                                         <div>
@@ -52,9 +57,12 @@ const MyPost = () => {
                                 <td>
                                     {application.title}
                                 </td>
-                                <td>{application.applied_at}</td>
+                                <td>{application.time}</td>
+                                <td>{application.aplocationCount}</td>
                                 <th>
-                                    <button className="btn btn-ghost btn-xs">details</button>
+                                    <Link to={`/viewApplication/${application._id}`}>
+                                        <button className="btn  btn-xs">Show Application</button>
+                                    </Link>
                                 </th>
                             </tr>
                         )

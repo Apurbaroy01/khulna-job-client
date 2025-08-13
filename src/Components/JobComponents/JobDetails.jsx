@@ -8,8 +8,8 @@ const JobDetails = () => {
   return (
     <div className="min-h-screen bg-transparent p-6 md:p-10 text-white">
       <div className="max-w-3xl mx-auto bg-white/5 border border-white/10 backdrop-blur-md rounded-2xl shadow-lg p-8">
-        <div className='flex items-end gap-3 p-2'>
-            <img src={company_logo} alt="" />
+        <div className='flex items-end gap-3 p-2 '>
+            <img src={company_logo} alt="logo" className='w-20 rounded' />
             <h2 className="text-3xl font-bold  mb-4">{title}</h2>
         </div>
         <p className="text-lg text-gray-200 mb-2"><span className="font-semibold">Company:</span> {company}</p>

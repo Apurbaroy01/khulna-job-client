@@ -56,7 +56,7 @@ const AllJobs = () => {
                         <div className="flex items-center gap-3 p-4 border-b border-white/10 bg-gradient-to-r from-white/5 to-transparent">
                             <img
                                 className="w-12 h-12 object-contain rounded-lg border border-white/10"
-                                src={job.company_logo}
+                                src={job.company_logo || "/default-logo.png"}
                                 alt={job.company}
                             />
                             <div className="text-sm">
