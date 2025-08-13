@@ -1,3 +1,4 @@
+import Swal from "sweetalert2";
 import UseAuth from "../Hooks/UseAuth";
 
 
@@ -56,18 +57,25 @@ const AddJob = () => {
 
         console.log(data);
 
-        fetch('http://localhost:5000/jobs',{
+        fetch('http://localhost:5000/jobs', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify(data),
         })
-        .then(res => res.json())
-        .then(data => {
-            console.log(data)
-        })
-       
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                form.reset();
+
+                Swal.fire({
+                    title: "Successfull!",
+                    icon: "success",
+                    draggable: true
+                });
+            })
+
     };
 
     const inputClass =

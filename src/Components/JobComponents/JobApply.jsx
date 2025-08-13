@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { useParams } from "react-router-dom";
 import AuthConText from "../../Firebase/Context/AuthConText";
+import Swal from "sweetalert2";
 
 
 
@@ -14,14 +15,14 @@ const JobApply = () => {
 
     const now = new Date();
     const appliedAt = now.toLocaleString('en-US', {
-        timeZone: 'Asia/Dhaka',      
+        timeZone: 'Asia/Dhaka',
         year: 'numeric',
-        month: 'long',              
+        month: 'long',
         day: '2-digit',
         hour: '2-digit',
         minute: '2-digit',
         second: '2-digit',
-        hour12: true              
+        hour12: true
     });
     console.log(appliedAt);
 
@@ -46,18 +47,23 @@ const JobApply = () => {
 
         console.log(jobApplication)
 
-        fetch('http://localhost:5000/Application-jobs',{
+        fetch('http://localhost:5000/Application-jobs', {
             method: 'POST',
-            headers:{
-                'content-type':'application/json'
+            headers: {
+                'content-type': 'application/json'
             },
             body: JSON.stringify(jobApplication)
         })
-        .then(res=>res.json())
-        .then(data=>{
-            console.log(data)
-            form.reset();
-        });
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                form.reset();
+                Swal.fire({
+                    title: "Successfull!",
+                    icon: "success",
+                    draggable: true
+                });
+            });
     };
 
     return (
