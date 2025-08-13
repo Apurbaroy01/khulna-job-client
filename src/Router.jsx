@@ -11,6 +11,7 @@ import Application from "./Components/Application/Application";
 import AddJob from "./Components/MyPost.jsx/AddJob";
 import MyPost from "./Components/MyPost.jsx/MyPost";
 import ViewApplication from "./Components/MyPost.jsx/viewApplication";
+import ViewApplicationDetails from "./Components/MyPost.jsx/ViewApplicationDetails";
 
 
 
@@ -54,6 +55,11 @@ const router = createBrowserRouter([
         path: 'viewApplication/:id',
         element: <ViewApplication></ViewApplication>,
         loader: ({params}) => fetch(`http://localhost:5000/Application/jobs/${params.id}`),
+      },
+      {
+        path: 'viewApplicationDetails/:id',
+        element: <ViewApplicationDetails></ViewApplicationDetails>,
+        loader: ({params}) => fetch(`http://localhost:5000/Application/jobApplication/${params.id}`),
       },
       
       {

@@ -26,7 +26,7 @@ const ViewApplication = () => {
                                 <td>{application.applied_at}</td>
                                 <td>Acction</td>
                                 <td>
-                                    <Link>
+                                    <Link to={`/viewApplicationDetails/${application._id}`}>
                                         <button className='btn '>View</button>
                                     </Link>
                                 </td>
