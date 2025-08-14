@@ -31,6 +31,7 @@ const Application = () => {
                         <th>Name</th>
                         <th>Job</th>
                         <th>Time & Date</th>
+                        <th>Status</th>
                         <th></th>
                     </tr>
                 </thead>
@@ -60,6 +61,7 @@ const Application = () => {
                                     <span className="badge badge-ghost badge-sm">Active🔴</span>
                                 </td>
                                 <td>{application.applied_at}</td>
+                                <td>{application.status}</td>
                                 <th>
                                     <button className="btn btn-ghost btn-xs">details</button>
                                 </th>
