@@ -1,5 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import AuthConText from "../../Firebase/Context/AuthConText";
+import axios from "axios";
 
 
 
@@ -9,15 +10,24 @@ const Application = () => {
 
     useEffect(() => {
         if (user?.email) {
-            fetch(`http://localhost:5000/Application-jobs?email=${user.email}`)
-                .then(res => res.json())
-                .then(data => {
-                    console.log(data);
-                    setApplication(data);
+            // fetch(`http://localhost:5000/Application-jobs?email=${user.email}`)
+            //     .then(res => res.json())
+            //     .then(data => {
+            //         console.log(data);
+            //         setApplication(data);
+            //     })
+            //     .catch(error => {
+            //         console.error('Error fetching application jobs:', error);
+            //     });
+
+            axios.get(`http://localhost:5000/Application-jobs?email=${user.email}`,{
+                withCredentials: true
+            })
+                .then(res => {
+                    console.log(res.data);
+                    setApplication(res.data);
                 })
-                .catch(error => {
-                    console.error('Error fetching application jobs:', error);
-                });
+                
         }
     }, [user?.email]);
 
