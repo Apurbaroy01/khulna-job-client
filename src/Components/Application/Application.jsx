@@ -20,14 +20,14 @@ const Application = () => {
             //         console.error('Error fetching application jobs:', error);
             //     });
 
-            axios.get(`http://localhost:5000/Application-jobs?email=${user.email}`,{
+            axios.get(`http://localhost:5000/Application-jobs?email=${user.email}`, {
                 withCredentials: true
             })
                 .then(res => {
                     console.log(res.data);
                     setApplication(res.data);
                 })
-                
+
         }
     }, [user?.email]);
 
@@ -71,9 +71,16 @@ const Application = () => {
                                     <span className="badge badge-ghost badge-sm">Active🔴</span>
                                 </td>
                                 <td>{application.applied_at}</td>
-                                <td>{application.status}</td>
+                                <td>
+                                    {
+                                        application.status && <div className="badge badge-outline badge-info">
+                                            {application.status}
+                                        </div>
+                                    }
+
+                                </td>
                                 <th>
-                                    <button className="btn btn-ghost btn-xs">details</button>
+                                    <button className="btn btn-link text-pink-500 btn-xs">Details</button>
                                 </th>
                             </tr>
                         )
