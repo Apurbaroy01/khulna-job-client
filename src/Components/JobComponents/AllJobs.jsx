@@ -8,6 +8,7 @@ import job2 from '../../assets/job2.png';
 const AllJobs = () => {
     const loderJob = useLoaderData([]);
     const [jobs] = useState(loderJob);
+    console.log(jobs)
 
     return (
         <div>
@@ -89,7 +90,7 @@ const AllJobs = () => {
                             {/* Bottom Actions */}
                             <div className="mt-4 flex items-center justify-between text-sm text-gray-300">
                                 <p className="font-medium">
-                                    ${job.salaryRange.min} - {job.salaryRange.max} {job.salaryRange.currency}
+                                    ${job?.salaryRange?.min} - {job?.salaryRange?.max} {job?.salaryRange?.currency}
                                 </p>
                                 <Link to={`/job/${job._id}`}>
                                     <button className="bg-cyan-500 hover:bg-cyan-400 text-white px-4 py-1 rounded-full text-xs transition-all">

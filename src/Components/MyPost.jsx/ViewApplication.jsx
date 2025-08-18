@@ -48,7 +48,7 @@ const ViewApplication = () => {
                                 <td>
                                     <select
                                         onChange={(e)=>handleStatus(e, application._id,)}
-                                        defaultValue={application.status}
+                                        defaultValue={application.status ||'Change Status'}
                                         className=" select-sm bg-gradient-to-r p-2 from-blue-500 to-indigo-500 text-black font-medium rounded-lg border-0 shadow-md focus:outline-none focus:ring-2 focus:ring-indigo-400">
                                         <option disabled={true}>Change Status</option>
                                         <option>Hire</option>

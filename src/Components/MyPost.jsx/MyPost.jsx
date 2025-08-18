@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import UseAuth from '../Hooks/UseAuth';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 const MyPost = () => {
     const [job, setJob] = useState([]);
@@ -8,13 +9,22 @@ const MyPost = () => {
 
     useEffect(() => {
         if (user?.email) { // user আছে কিনা চেক
-            fetch(`http://localhost:5000/jobs?email=${user.email}`)
-                .then(res => res.json())
-                .then(data => {
-                    console.log(data);
-                    setJob(data);
-                })
-                .catch(err => console.error(err));
+            // fetch(`http://localhost:5000/jobs?email=${user.email}`)
+            //     .then(res => res.json())
+            //     .then(data => {
+            //         console.log(data);
+            //         setJob(data);
+            //     })
+            //     .catch(err => console.error(err));
+
+            axios.get(`http://localhost:5000/jobs?email=${user.email}`,{
+                withCredentials: true
+            })
+            .then(res=>{
+                console.log(res.data)
+                setJob(res.data);
+            })
+
         }
     }, [user?.email]); // optional chaining ব্যবহার
 
@@ -42,10 +52,10 @@ const MyPost = () => {
                                             <div className="mask mask-squircle h-12 w-12">
                                                 <img
                                                     src={application.company_logo || "logo"}
-                                                    alt="logo" 
-                                                    
-                                                    />
-                                                    
+                                                    alt="logo"
+
+                                                />
+
                                             </div>
                                         </div>
                                         <div>
