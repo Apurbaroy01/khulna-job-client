@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
 import UseAuth from '../Hooks/UseAuth';
 import { Link } from 'react-router-dom';
+import useAxios from '../Hooks/UseAxios';
 // import axios from 'axios';
-import useAxios from '../Hooks/useAxios';
+
 
 const MyPost = () => {
     const [job, setJob] = useState([]);
@@ -14,15 +15,6 @@ const MyPost = () => {
         if (user?.email) { // user আছে কিনা চেক
             
 
-            // axios.get(`http://localhost:5000/jobs?email=${user.email}`, {
-            //     withCredentials: true
-            // })
-            //     .then(res => {
-            //         console.log(res.data)
-            //         setJob(res.data);
-            //     })
-
-
             axiosSorce.get(`/jobs?email=${user.email}`)
             .then(res=>{
                 console.log(res.data)
@@ -33,7 +25,7 @@ const MyPost = () => {
     }, [user?.email]); // optional chaining ব্যবহার
 
     return (
-        <div className="overflow-x-auto w-11/12 mx-auto mt-10 bg-white/10 backdrop-blur-md rounded-2xl shadow-lg p-2 text-white">
+        <div className="overflow-x-auto w-11/12 mx-auto mt-10 bg-white/10 backdrop-blur-md rounded-2xl shadow-lg p-2 text-white mt-20">
             <table className="table ">
                 {/* head */}
                 <thead className="border-b-2 text-white">

@@ -3,15 +3,9 @@ import { useParams } from "react-router-dom";
 import AuthConText from "../../Firebase/Context/AuthConText";
 import Swal from "sweetalert2";
 
-
-
-
 const JobApply = () => {
     const { id } = useParams();
-    const { user } = useContext(AuthConText)
-
-    // console.log(id, user.email);
-
+    const { user } = useContext(AuthConText);
 
     const now = new Date();
     const appliedAt = now.toLocaleString('en-US', {
@@ -24,8 +18,6 @@ const JobApply = () => {
         second: '2-digit',
         hour12: true
     });
-    console.log(appliedAt);
-
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -34,8 +26,6 @@ const JobApply = () => {
         const github = form.github.value;
         const resume = form.resume.value;
 
-        // console.log(linkedin, github, resume);
-
         const jobApplication = {
             job_id: id,
             applicant_email: user.email,
@@ -43,23 +33,18 @@ const JobApply = () => {
             linkedin,
             github,
             resume,
-        }
-
-        console.log(jobApplication)
+        };
 
         fetch('http://localhost:5000/Application-jobs', {
             method: 'POST',
-            headers: {
-                'content-type': 'application/json'
-            },
+            headers: { 'content-type': 'application/json' },
             body: JSON.stringify(jobApplication)
         })
             .then(res => res.json())
-            .then(data => {
-                console.log(data)
+            .then(() => {
                 form.reset();
                 Swal.fire({
-                    title: "Successfull!",
+                    title: "Successful!",
                     icon: "success",
                     draggable: true
                 });
@@ -67,52 +52,59 @@ const JobApply = () => {
     };
 
     return (
-        <div className="hero bg-transparent min-h-screen text-white">
-            <div className="hero-content flex-col w-full px-4">
-
+        <div className="hero bg-transparent min-h-screen text-white px-3 sm:px-6 py-6">
+            <div className="hero-content flex-col w-full">
 
                 {/* Container */}
-                <div className="bg-white/5 backdrop-blur-md w-full max-w-4xl shadow-2xl p-8 rounded-lg">
-                    <div className="text-center lg:text-left  w-full">
-                        <h1 className="text-5xl font-bold text-center">Apply Now!</h1>
-                    </div>
-                    <div className="card-body">
-                        <form onSubmit={handleSubmit} className="space-y-4">
-                            <fieldset>
-                                <label className="label text-white">LinkedIn</label>
-                                <input
-                                    type="text"
-                                    className="input input-bordered w-full"
-                                    placeholder="LinkedIn"
-                                    name="linkedin"
-                                />
-                            </fieldset>
+                <div className="bg-white/5 backdrop-blur-md w-full max-w-lg sm:max-w-2xl md:max-w-4xl shadow-xl p-4 sm:p-6 md:p-8 rounded-xl">
+                    
+                    {/* Title */}
+                    <h1 className="text-2xl sm:text-3xl md:text-5xl font-bold text-center mb-6">
+                        Apply Now!
+                    </h1>
 
-                            <fieldset>
-                                <label className="label text-white">GitHub</label>
-                                <input
-                                    type="text"
-                                    className="input input-bordered w-full"
-                                    placeholder="GitHub"
-                                    name="github"
-                                />
-                            </fieldset>
+                    {/* Form */}
+                    <form onSubmit={handleSubmit} className="space-y-4 text-sm sm:text-base">
+                        <fieldset>
+                            <label className="label text-white text-xs sm:text-sm">LinkedIn</label>
+                            <input
+                                type="text"
+                                className="input input-bordered w-full text-xs sm:text-sm py-2 sm:py-3"
+                                placeholder="Enter LinkedIn profile"
+                                name="linkedin"
+                                required
+                            />
+                        </fieldset>
 
-                            <fieldset>
-                                <label className="label text-white">Resume</label>
-                                <input
-                                    type="text"
-                                    className="input input-bordered w-full"
-                                    placeholder="Resume"
-                                    name="resume"
-                                />
-                            </fieldset>
+                        <fieldset>
+                            <label className="label text-white text-xs sm:text-sm">GitHub</label>
+                            <input
+                                type="text"
+                                className="input input-bordered w-full text-xs sm:text-sm py-2 sm:py-3"
+                                placeholder="Enter GitHub profile"
+                                name="github"
+                                required
+                            />
+                        </fieldset>
 
-                            <button type="submit" className="btn btn-primary mt-4 w-full">
-                                Submit
-                            </button>
-                        </form>
-                    </div>
+                        <fieldset>
+                            <label className="label text-white text-xs sm:text-sm">Resume Link</label>
+                            <input
+                                type="url"
+                                className="input input-bordered w-full text-xs sm:text-sm py-2 sm:py-3"
+                                placeholder="Paste Resume (Google Drive / Link)"
+                                name="resume"
+                                required
+                            />
+                        </fieldset>
+
+                        <button 
+                            type="submit" 
+                            className="btn btn-primary mt-4 w-full py-2 sm:py-3 text-sm sm:text-base"
+                        >
+                            Submit Application
+                        </button>
+                    </form>
                 </div>
             </div>
         </div>

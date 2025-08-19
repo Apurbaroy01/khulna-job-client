@@ -26,7 +26,7 @@ const ViewApplication = () => {
         
     }
     return (
-        <div className="overflow-x-auto bg-white/10 backdrop-blur-md rounded-2xl shadow-lg p-2 text-white w-11/12 mx-auto mt-10">
+        <div className="overflow-x-auto bg-white/10 backdrop-blur-md rounded-2xl shadow-lg p-2 text-white w-11/12 mx-auto mt-20">
             <table className="table">
                 {/* head */}
                 <thead className='text-white border-b-2'>

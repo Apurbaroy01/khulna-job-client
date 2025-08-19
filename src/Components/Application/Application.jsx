@@ -27,7 +27,7 @@ const Application = () => {
     }, [user?.email]);
 
     return (
-        <div className="overflow-x-auto w-11/12 mx-auto mt-10 bg-white/10 backdrop-blur-md rounded-2xl shadow-lg p-2 text-white">
+        <div className="overflow-x-auto w-11/12 mx-auto mt-20 bg-white/10 backdrop-blur-md rounded-2xl shadow-lg p-2 text-white">
             <table className="table text-white">
                 {/* head */}
                 <thead className="border-b-2 text-white">
