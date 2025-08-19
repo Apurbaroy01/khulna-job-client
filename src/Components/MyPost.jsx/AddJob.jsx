@@ -23,13 +23,9 @@ const AddJob = () => {
     const min = form.salaryMin.value;
     const max = form.salaryMax.value;
     const hrEmail = form.hrEmail.value;
+    const description = form.description.value;
 
     const requirementsArray = form.requirements.value
-      .split("\n")
-      .map((item) => item.trim())
-      .filter((item) => item);
-
-    const responsibilitiesArray = form.responsibilities.value
       .split("\n")
       .map((item) => item.trim())
       .filter((item) => item);
@@ -46,7 +42,7 @@ const AddJob = () => {
       category,
       salaryRange,
       requirements: requirementsArray,
-      responsibilities: responsibilitiesArray,
+      description,
       email: user?.email || "",
       time: appliedAt,
     };
@@ -63,7 +59,7 @@ const AddJob = () => {
         form.reset();
 
         Swal.fire({
-          title: "✅ Job Added Successfully!",
+          title: " Job Added Successfully!",
           icon: "success",
           confirmButtonColor: "#6366f1",
         });
@@ -230,12 +226,12 @@ const AddJob = () => {
           {/* Responsibilities */}
           <div>
             <label className="block font-semibold text-white mb-1 text-sm sm:text-base">
-              Responsibilities
+              Description
             </label>
             <textarea
-              name="responsibilities"
+              name="description"
               className={textareaClass}
-              placeholder="Write each responsibility on a new line"
+              placeholder="Write a description"
               rows={2}
             ></textarea>
           </div>

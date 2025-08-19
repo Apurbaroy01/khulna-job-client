@@ -1,6 +1,8 @@
 import { useContext, useEffect, useState } from "react";
 import AuthConText from "../../Firebase/Context/AuthConText";
 import useAxios from "../Hooks/UseAxios";
+import axios from "axios";
+import Swal from "sweetalert2";
 
 
 // import axios from "axios";
@@ -28,8 +30,35 @@ const Application = () => {
         }
     }, [user?.email]);
 
-    const handleDelete=(id)=>{
-        console.log('delete',id)
+    const handleDelete = (id) => {
+        console.log('delete', id)
+
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                axios.delete(`http://localhost:5000/Application-jobs/${id}`)
+                    .then(res => {
+                        console.log(res.data)
+
+                        Swal.fire({
+                            title: "Deleted!",
+                            text: "Your file has been deleted.",
+                            icon: "success"
+                        });
+                    })
+            }
+        });
+
+
+
+
     }
 
     return (
@@ -82,7 +111,7 @@ const Application = () => {
                                 </td>
                                 <th className="flex justify-between">
                                     <button className="btn text-pink-500 btn-xs">Details</button>
-                                    <button onClick={()=>handleDelete(application._id)} className="btn text-pink-500 btn-xs">❌</button>
+                                    <button onClick={() => handleDelete(application._id)} className="btn text-pink-500 btn-xs">❌</button>
                                 </th>
 
                             </tr>

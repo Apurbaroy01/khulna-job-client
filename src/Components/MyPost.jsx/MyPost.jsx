@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import useAxios from '../Hooks/UseAxios';
 import { MdDeleteForever } from 'react-icons/md';
 import axios from 'axios';
+import Swal from 'sweetalert2';
 // import axios from 'axios';
 
 
@@ -27,12 +28,32 @@ const MyPost = () => {
     }, [user?.email]); // optional chaining ব্যবহার
 
 
-    const handleDelete=(id)=>{
-        console.log('delete id',id)
-        axios.delete(`http://localhost:5000/jobs/${id}`)
-        .then(res=>{
-            console.log(res.data)
-        })
+    const handleDelete = (id) => {
+        console.log('delete id', id)
+
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                axios.delete(`http://localhost:5000/jobs/${id}`)
+                    .then(res => {
+                        console.log(res.data)
+
+                        Swal.fire({
+                            title: "Deleted!",
+                            text: "Your file has been deleted.",
+                            icon: "success"
+                        });
+                    })
+            }
+        });
+
     };
 
     return (
@@ -80,7 +101,7 @@ const MyPost = () => {
                                     <Link to={`/viewApplication/${application._id}`}>
                                         <button className="btn  btn-xs">Show Application</button>
                                     </Link>
-                                    <p onClick={()=>handleDelete(application._id)} className='text-xl btn'>
+                                    <p onClick={() => handleDelete(application._id)} className='text-xl btn'>
                                         <MdDeleteForever />
                                     </p>
                                 </th>
