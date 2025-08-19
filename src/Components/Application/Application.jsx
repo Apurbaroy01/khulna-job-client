@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import AuthConText from "../../Firebase/Context/AuthConText";
 import useAxios from "../Hooks/UseAxios";
 
+
 // import axios from "axios";
 
 
@@ -15,7 +16,7 @@ const Application = () => {
 
     useEffect(() => {
         if (user?.email) {
-            
+
             axiosSorce.get(`/Application-jobs?email=${user.email}`, {
                 withCredentials: true
             })
@@ -26,6 +27,10 @@ const Application = () => {
 
         }
     }, [user?.email]);
+
+    const handleDelete=(id)=>{
+        console.log('delete',id)
+    }
 
     return (
         <div className="overflow-x-auto w-11/12 mx-auto mt-20 bg-white/10 backdrop-blur-md rounded-2xl shadow-lg p-2 text-white">
@@ -75,9 +80,11 @@ const Application = () => {
                                     }
 
                                 </td>
-                                <th>
-                                    <button className="btn btn-link text-pink-500 btn-xs">Details</button>
+                                <th className="flex justify-between">
+                                    <button className="btn text-pink-500 btn-xs">Details</button>
+                                    <button onClick={()=>handleDelete(application._id)} className="btn text-pink-500 btn-xs">❌</button>
                                 </th>
+
                             </tr>
                         )
                     }

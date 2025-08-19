@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import UseAuth from '../Hooks/UseAuth';
 import { Link } from 'react-router-dom';
 import useAxios from '../Hooks/UseAxios';
+import { MdDeleteForever } from 'react-icons/md';
+import axios from 'axios';
 // import axios from 'axios';
 
 
@@ -13,19 +15,28 @@ const MyPost = () => {
 
     useEffect(() => {
         if (user?.email) { // user আছে কিনা চেক
-            
+
 
             axiosSorce.get(`/jobs?email=${user.email}`)
-            .then(res=>{
-                console.log(res.data)
-                setJob(res.data);
-            })
+                .then(res => {
+                    console.log(res.data)
+                    setJob(res.data);
+                })
 
         }
     }, [user?.email]); // optional chaining ব্যবহার
 
+
+    const handleDelete=(id)=>{
+        console.log('delete id',id)
+        axios.delete(`http://localhost:5000/jobs/${id}`)
+        .then(res=>{
+            console.log(res.data)
+        })
+    };
+
     return (
-        <div className="overflow-x-auto w-11/12 mx-auto mt-10 bg-white/10 backdrop-blur-md rounded-2xl shadow-lg p-2 text-white mt-20">
+        <div className="overflow-x-auto w-11/12 mx-auto  bg-white/10 backdrop-blur-md rounded-2xl shadow-lg p-2 text-white mt-20">
             <table className="table ">
                 {/* head */}
                 <thead className="border-b-2 text-white">
@@ -65,11 +76,15 @@ const MyPost = () => {
                                 </td>
                                 <td>{application.time}</td>
                                 <td>{application.aplocationCount}</td>
-                                <th>
+                                <th className='flex justify-between items-center'>
                                     <Link to={`/viewApplication/${application._id}`}>
                                         <button className="btn  btn-xs">Show Application</button>
                                     </Link>
+                                    <p onClick={()=>handleDelete(application._id)} className='text-xl btn'>
+                                        <MdDeleteForever />
+                                    </p>
                                 </th>
+
                             </tr>
                         )
                     }
