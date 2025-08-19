@@ -1,25 +1,29 @@
 import { useEffect, useState } from 'react';
 import UseAuth from '../Hooks/UseAuth';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
+// import axios from 'axios';
+import useAxios from '../Hooks/useAxios';
 
 const MyPost = () => {
     const [job, setJob] = useState([]);
     const { user } = UseAuth();
 
+    const axiosSorce = useAxios();
+
     useEffect(() => {
         if (user?.email) { // user আছে কিনা চেক
-            // fetch(`http://localhost:5000/jobs?email=${user.email}`)
-            //     .then(res => res.json())
-            //     .then(data => {
-            //         console.log(data);
-            //         setJob(data);
-            //     })
-            //     .catch(err => console.error(err));
+            
 
-            axios.get(`http://localhost:5000/jobs?email=${user.email}`,{
-                withCredentials: true
-            })
+            // axios.get(`http://localhost:5000/jobs?email=${user.email}`, {
+            //     withCredentials: true
+            // })
+            //     .then(res => {
+            //         console.log(res.data)
+            //         setJob(res.data);
+            //     })
+
+
+            axiosSorce.get(`/jobs?email=${user.email}`)
             .then(res=>{
                 console.log(res.data)
                 setJob(res.data);
