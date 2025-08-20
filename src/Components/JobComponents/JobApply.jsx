@@ -52,7 +52,7 @@ const JobApply = () => {
     };
 
     return (
-        <div className="hero bg-transparent min-h-screen text-white px-3 sm:px-6 py-6">
+        <div className="hero bg-transparent min-h-screen text-white px-3 sm:px-6 py-6 mt-10">
             <div className="hero-content flex-col w-full">
 
                 {/* Container */}
@@ -64,12 +64,12 @@ const JobApply = () => {
                     </h1>
 
                     {/* Form */}
-                    <form onSubmit={handleSubmit} className="space-y-4 text-sm sm:text-base">
+                    <form onSubmit={handleSubmit} className="space-y-4 text-sm sm:text-base  **:bg-transparent  **:shadow-2xl ">
                         <fieldset>
                             <label className="label text-white text-xs sm:text-sm">LinkedIn</label>
                             <input
                                 type="text"
-                                className="input input-bordered w-full text-xs sm:text-sm py-2 sm:py-3"
+                                className="input input-bordered border-2 border-gray-200/20  w-full text-xs sm:text-sm py-2 sm:py-3"
                                 placeholder="Enter LinkedIn profile"
                                 name="linkedin"
                                 required
@@ -80,7 +80,7 @@ const JobApply = () => {
                             <label className="label text-white text-xs sm:text-sm">GitHub</label>
                             <input
                                 type="text"
-                                className="input input-bordered w-full text-xs sm:text-sm py-2 sm:py-3"
+                                className="input input-bordered border-2 border-gray-200/20 w-full text-xs sm:text-sm py-2 sm:py-3"
                                 placeholder="Enter GitHub profile"
                                 name="github"
                                 required
@@ -91,7 +91,7 @@ const JobApply = () => {
                             <label className="label text-white text-xs sm:text-sm">Resume Link</label>
                             <input
                                 type="url"
-                                className="input input-bordered w-full text-xs sm:text-sm py-2 sm:py-3"
+                                className="input input-bordered border-2 border-gray-200/20 w-full text-xs sm:text-sm py-2 sm:py-3"
                                 placeholder="Paste Resume (Google Drive / Link)"
                                 name="resume"
                                 required
@@ -100,7 +100,7 @@ const JobApply = () => {
 
                         <button 
                             type="submit" 
-                            className="btn btn-primary mt-4 w-full py-2 sm:py-3 text-sm sm:text-base"
+                            className="btn text-white shadow-2xl hover:bg-gray-600  mt-4 w-full py-2 sm:py-3 text-sm sm:text-base"
                         >
                             Submit Application
                         </button>

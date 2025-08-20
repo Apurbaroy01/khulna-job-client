@@ -32,7 +32,7 @@ const AllJobs = () => {
 
                     {/* Text Content */}
                     <div className='flex-1 text-center lg:text-left'>
-                        <h1 className="text-xl xs:text-2xl sm:text-3xl md:text-5xl font-extrabold leading-tight">
+                        <h1 className="text-2xl xs:text-xl sm:text-xl md:text-5xl font-extrabold leading-tight">
                             Find Your <span className="text-cyan-400">Dream Job</span>
                         </h1>
                         <p className="py-3 sm:py-6 text-gray-300 text-xs xs:text-sm sm:text-base md:text-lg max-w-md mx-auto lg:mx-0">
