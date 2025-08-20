@@ -88,18 +88,18 @@ const MyPost = () => {
                                         </div>
                                         <div>
                                             <div className="font-bold">{application.company}</div>
-                                            <div className="text-sm opacity-50">{application.location}</div>
+                                            <div className="text-sm opacity-50 sm:text-xs">{application.location}</div>
                                         </div>
                                     </div>
                                 </td>
                                 <td>
                                     {application.title}
                                 </td>
-                                <td>{application.time}</td>
+                                <td className='text-xs'>{application.time}</td>
                                 <td>{application.aplocationCount}</td>
-                                <th className='flex justify-between items-center'>
+                                <th className='flex justify-between items-center space-x-2'>
                                     <Link to={`/viewApplication/${application._id}`}>
-                                        <button className="btn  btn-xs">Show Application</button>
+                                        <button className="btn  btn-xs ">Show Application</button>
                                     </Link>
                                     <p onClick={() => handleDelete(application._id)} className='text-xl btn'>
                                         <MdDeleteForever />

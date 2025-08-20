@@ -91,16 +91,16 @@ const Application = () => {
                                         </div>
                                         <div>
                                             <div className="font-bold">{application.company}</div>
-                                            <div className="text-sm opacity-50">{application.location}</div>
+                                            <div className="text-xs opacity-50">{application.location}</div>
                                         </div>
                                     </div>
                                 </td>
                                 <td>
                                     {application.title}
                                     <br />
-                                    <span className="badge badge-ghost badge-sm">Active🔴</span>
+                                    <span className="badge badge-ghost badge-xs">Active🔴</span>
                                 </td>
-                                <td>{application.applied_at}</td>
+                                <td className="text-xs">{application.applied_at}</td>
                                 <td>
                                     {
                                         application.status && <div className="badge badge-outline badge-info">
@@ -109,7 +109,7 @@ const Application = () => {
                                     }
 
                                 </td>
-                                <th className="flex justify-between">
+                                <th className="flex justify-between  space-x-2">
                                     <button className="btn text-pink-500 btn-xs">Details</button>
                                     <button onClick={() => handleDelete(application._id)} className="btn text-pink-500 btn-xs">❌</button>
                                 </th>
