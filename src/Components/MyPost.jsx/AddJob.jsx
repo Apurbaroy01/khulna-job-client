@@ -74,7 +74,7 @@ const AddJob = () => {
     "textarea textarea-bordered w-full rounded-lg px-3 py-2 text-sm sm:text-base border-gray-300 focus:border-indigo-500 focus:ring focus:ring-indigo-200";
 
   return (
-    <div className="w-full min-h-screen bg-transparent flex justify-center items-center p-4 sm:p-6">
+    <div className="w-full min-h-screen bg-transparent flex justify-center items-center p-4 mt-15 sm:p-6">
       <form
         onSubmit={handleSubmit}
         className="bg-white/5 backdrop-blur-md shadow-xl rounded-2xl p-6 sm:p-10 w-full max-w-2xl border border-gray-200"

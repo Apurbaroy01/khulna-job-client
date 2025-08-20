@@ -12,7 +12,7 @@ const AllJobs = () => {
     return (
         <div>
             {/* Hero Section */}
-            <div className="hero mt-10 px-4 sm:px-6 text-white">
+            <div className="hero mt-15 px-4 sm:px-6 text-white">
                 <div className="hero-content flex-col-reverse lg:flex-row-reverse items-center gap-6 sm:gap-10">
                     {/* Animated Images */}
                     <div className='flex-1 relative flex justify-center items-center gap-3 sm:gap-4'>

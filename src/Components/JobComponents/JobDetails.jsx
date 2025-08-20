@@ -5,11 +5,11 @@ const JobDetails = () => {
   const { _id, title, company_logo, company, deadline, location, salary, description } = loadingJob;
 
   return (
-    <div className="min-h-screen bg-transparent p-3 sm:p-6 md:p-10 text-white">
+    <div className="min-h-screen bg-transparent p-3 sm:p-6 md:p-10 text-white mt-15">
       <div className="max-w-3xl mx-auto bg-white/5 border border-white/10 backdrop-blur-md rounded-2xl shadow-lg p-4 sm:p-6 md:p-8">
         
         {/* Header: Logo + Title */}
-        <div className="flex flex-col sm:flex-row sm:items-center sm:gap-4 mb-6">
+        <div className="flex flex-row sm:flex-row sm:items-center sm:gap-4 ">
           <img 
             src={company_logo} 
             alt="logo" 
