@@ -27,7 +27,7 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <AllJobs></AllJobs>,
-        loader: () => fetch('http://localhost:5000/jobs')
+        loader: () => fetch('https://khula-job-server.vercel.app/jobs')
       },
       {
         path: 'register',
@@ -39,12 +39,12 @@ const router = createBrowserRouter([
       },
       {
         path: 'job/:id',
-        loader: ({params})=> fetch(`http://localhost:5000/jobs/${params.id}`),
+        loader: ({params})=> fetch(`https://khula-job-server.vercel.app/jobs/${params.id}`),
         element: <PrivetRouter><JobDetails></JobDetails></PrivetRouter>
       },
       {
         path: 'jobapply/:id',
-        loader: ({params})=> fetch(`http://localhost:5000/jobs/${params.id}`),
+        loader: ({params})=> fetch(`https://khula-job-server.vercel.app/jobs/${params.id}`),
         element: <JobApply></JobApply>
       },
       {
@@ -54,12 +54,12 @@ const router = createBrowserRouter([
       {
         path: 'viewApplication/:id',
         element: <ViewApplication></ViewApplication>,
-        loader: ({params}) => fetch(`http://localhost:5000/Application/jobs/${params.id}`),
+        loader: ({params}) => fetch(`https://khula-job-server.vercel.app/Application/jobs/${params.id}`),
       },
       {
         path: 'viewApplicationDetails/:id',
         element: <ViewApplicationDetails></ViewApplicationDetails>,
-        loader: ({params}) => fetch(`http://localhost:5000/Application/jobApplication/${params.id}`),
+        loader: ({params}) => fetch(`https://khula-job-server.vercel.app/Application/jobApplication/${params.id}`),
       },
       
       {

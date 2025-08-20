@@ -11,7 +11,7 @@ const ViewApplication = () => {
         }
         console.log(data,id);
 
-        fetch(`http://localhost:5000/Application-jobs/${id}`,{
+        fetch(`https://khula-job-server.vercel.app/Application-jobs/${id}`,{
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json'

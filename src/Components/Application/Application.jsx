@@ -43,7 +43,7 @@ const Application = () => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                axios.delete(`http://localhost:5000/Application-jobs/${id}`)
+                axios.delete(`https://khula-job-server.vercel.app/Application-jobs/${id}`)
                     .then(res => {
                         console.log(res.data)
 

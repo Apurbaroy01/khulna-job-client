@@ -35,7 +35,7 @@ const JobApply = () => {
             resume,
         };
 
-        fetch('http://localhost:5000/Application-jobs', {
+        fetch('https://khula-job-server.vercel.app/Application-jobs', {
             method: 'POST',
             headers: { 'content-type': 'application/json' },
             body: JSON.stringify(jobApplication)

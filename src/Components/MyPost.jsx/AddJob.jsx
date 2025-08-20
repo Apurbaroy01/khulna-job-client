@@ -47,7 +47,7 @@ const AddJob = () => {
       time: appliedAt,
     };
 
-    fetch("http://localhost:5000/jobs", {
+    fetch("https://khula-job-server.vercel.app/jobs", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

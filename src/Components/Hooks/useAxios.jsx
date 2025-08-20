@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 
 
 const axiosinstance = axios.create({
-    baseURL: 'http://localhost:5000',
+    baseURL: 'https://khula-job-server.vercel.app',
     withCredentials: true
 });
 
