@@ -28,6 +28,7 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <AllJobs></AllJobs>,
+        loader: ()=> fetch('http://localhost:5000/productCount')
       },
       {
         path: 'register',

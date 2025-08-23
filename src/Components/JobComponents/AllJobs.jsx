@@ -5,16 +5,42 @@ import { motion } from "framer-motion";
 import job1 from '../../assets/job1.png';
 import job2 from '../../assets/job2.png';
 import UseJobs from '../Hooks/UseJobs';
+import { FaAnglesLeft, FaAnglesRight } from 'react-icons/fa6';
 
 const AllJobs = () => {
-    // const loderJob = useLoaderData([]);
-    // const [jobs] = useState(loderJob);
-
     const [sort, settSort] = useState(false)
-    const [search, setSearch]= useState("")
-    // console.log(sort,search)
-    const {jobs}=UseJobs(sort,search);
+    const [search, setSearch] = useState("")
+    const [currentpage, setCurrentPage] = useState(0);
+    const [itemPage, setItemPage] = useState(8);
+    const { jobs, loading } = UseJobs(sort, search, currentpage, itemPage);
 
+    const { count } = useLoaderData();
+
+
+    
+    const numberOfPage = Math.ceil(count / itemPage);
+    const page = [...Array(numberOfPage).keys()]
+    console.log(page)
+
+
+    const handleNextpage = () => {
+        if (currentpage < page.length) {
+            setCurrentPage(currentpage + 1)
+        }
+    };
+
+    const handlePreviousPage = () => {
+        if (currentpage > 0) {
+            setCurrentPage(currentpage - 1)
+        }
+    };
+
+
+
+
+    if (loading) {
+        return <h2 className="text-center mt-10">Loading...</h2>;
+    }
 
 
     return (
@@ -72,7 +98,7 @@ const AllJobs = () => {
                         </svg>
                         <input
                             type="search"
-                            onChange={(e)=>setSearch(e.target.value)}
+                            onChange={(e) => setSearch(e.target.value)}
                             required
                             placeholder="Search location..."
                             className="w-full text-xs bg-transparent outline-none placeholder:text-gray-400 text-gray-200"
@@ -83,8 +109,8 @@ const AllJobs = () => {
                     <button
                         onClick={() => settSort(!sort)}
                         className={`w-full sm:w-auto text-xs px-2 py-2 rounded-xl font-medium transition-all shadow-md ${sort
-                                ? "bg-gradient-to-r from-blue-500 to-indigo-600 text-white hover:opacity-90"
-                                : "bg-white/10 text-gray-200 hover:bg-white/20"
+                            ? "bg-gradient-to-r from-blue-500 to-indigo-600 text-white hover:opacity-90"
+                            : "bg-white/10 text-gray-200 hover:bg-white/20"
                             }`}
                     >
                         {sort ? "Sorted By Salary" : "Sort By Salary"}
@@ -151,6 +177,21 @@ const AllJobs = () => {
                         </div>
                     </div>
                 ))}
+            </div>
+            <div className='w-11/12 mx-auto flex justify-center gap-2 mt-10'>
+                
+
+                <button onClick={handlePreviousPage} className='btn btn-accent'><FaAnglesLeft /></button>
+                {
+                    page.map(page =>
+                        <button
+                            key={page}
+                            className='btn'
+                            onClick={() => setCurrentPage(page)}
+                        >{page + 1}</button>
+                    )
+                }
+                <button onClick={handleNextpage} className='btn btn-accent'><FaAnglesRight /></button>
             </div>
         </div>
     );
