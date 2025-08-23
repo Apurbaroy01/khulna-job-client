@@ -6,6 +6,7 @@ import job1 from '../../assets/job1.png';
 import job2 from '../../assets/job2.png';
 import UseJobs from '../Hooks/UseJobs';
 import { FaAnglesLeft, FaAnglesRight } from 'react-icons/fa6';
+import { RotatingLines } from 'react-loader-spinner';
 
 const AllJobs = () => {
     const [sort, settSort] = useState(false)
@@ -17,7 +18,7 @@ const AllJobs = () => {
     const { count } = useLoaderData();
 
 
-    
+
     const numberOfPage = Math.ceil(count / itemPage);
     const page = [...Array(numberOfPage).keys()]
     console.log(page)
@@ -39,8 +40,25 @@ const AllJobs = () => {
 
 
     if (loading) {
-        return <h2 className="text-center mt-10">Loading...</h2>;
+        return (
+            <div className="flex justify-center items-center h-screen">
+                <h2 className="text-red-500 text-2xl font-semibold">
+                    <RotatingLines
+                        visible={true}
+                        height="96"
+                        width="96"
+                        color="grey"
+                        strokeWidth="5"
+                        animationDuration="0.75"
+                        ariaLabel="rotating-lines-loading"
+                        wrapperStyle={{}}
+                        wrapperClass=""
+                    />
+                </h2>
+            </div>
+        );
     }
+
 
 
     return (
@@ -179,7 +197,7 @@ const AllJobs = () => {
                 ))}
             </div>
             <div className='w-11/12 mx-auto flex justify-center gap-2 mt-10'>
-                
+
 
                 <button onClick={handlePreviousPage} className='btn btn-accent'><FaAnglesLeft /></button>
                 {

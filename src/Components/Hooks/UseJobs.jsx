@@ -8,7 +8,7 @@ const UseJobs = (sort, search, currentpage, itemPage) => {
     useEffect(() => {
         setLoading(true);
 
-        axios.get(`http://localhost:5000/jobs?page=${currentpage}&size=${itemPage}&sort=${sort}&search=${search}`)
+        axios.get(`https://khula-job-server.vercel.app/jobs?page=${currentpage}&size=${itemPage}&sort=${sort}&search=${search}`)
             .then(res => {
 
                 setJobs(res.data)
