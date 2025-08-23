@@ -4,9 +4,11 @@ import { Link, useLoaderData } from 'react-router-dom';
 import { motion } from "framer-motion";
 import job1 from '../../assets/job1.png';
 import job2 from '../../assets/job2.png';
+import defaul from '../../assets/default-logo.png';
 import UseJobs from '../Hooks/UseJobs';
 import { FaAnglesLeft, FaAnglesRight } from 'react-icons/fa6';
 import { RotatingLines } from 'react-loader-spinner';
+
 
 const AllJobs = () => {
     const [sort, settSort] = useState(false)
@@ -144,7 +146,7 @@ const AllJobs = () => {
                         <div className="flex items-center gap-2 sm:gap-3 p-2 sm:p-4 border-b border-white/10 bg-gradient-to-r from-white/5 to-transparent">
                             <img
                                 className="w-8 h-8 sm:w-12 sm:h-12 object-contain rounded-lg border border-white/10"
-                                src={job.company_logo || "/default-logo.png"}
+                                src={job.company_logo || defaul }
                                 alt={job.company}
                             />
                             <div className="text-[10px] xs:text-xs sm:text-sm">
