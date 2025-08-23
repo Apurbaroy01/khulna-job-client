@@ -38,29 +38,6 @@ const AllJobs = () => {
 
 
 
-
-    if (loading) {
-        return (
-            <div className="flex justify-center items-center h-screen">
-                <h2 className="text-red-500 text-2xl font-semibold">
-                    <RotatingLines
-                        visible={true}
-                        height="96"
-                        width="96"
-                        color="grey"
-                        strokeWidth="5"
-                        animationDuration="0.75"
-                        ariaLabel="rotating-lines-loading"
-                        wrapperStyle={{}}
-                        wrapperClass=""
-                    />
-                </h2>
-            </div>
-        );
-    }
-
-
-
     return (
         <div>
             {/* Hero Section */}
@@ -136,7 +113,25 @@ const AllJobs = () => {
                 </div>
             </div>
 
-
+            <div>
+                {
+                    loading && <div className="flex justify-center items-center h-screen">
+                        <h2 className="text-red-500 text-2xl font-semibold">
+                            <RotatingLines
+                                visible={true}
+                                height="96"
+                                width="96"
+                                color="grey"
+                                strokeWidth="5"
+                                animationDuration="0.75"
+                                ariaLabel="rotating-lines-loading"
+                                wrapperStyle={{}}
+                                wrapperClass=""
+                            />
+                        </h2>
+                    </div>
+                }
+            </div>
 
             {/* Jobs Grid */}
             <div className="w-11/12 mx-auto mt-8 sm:mt-12 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
