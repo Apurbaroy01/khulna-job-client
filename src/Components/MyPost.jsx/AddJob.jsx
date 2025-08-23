@@ -30,7 +30,7 @@ const AddJob = () => {
       .map((item) => item.trim())
       .filter((item) => item);
 
-    const salaryRange = { min, max, currency };
+    const salaryRange = { min: parseInt(min), max: parseInt(max), currency };
 
     const data = {
       company,
@@ -196,13 +196,13 @@ const AddJob = () => {
             </label>
             <div className="flex flex-col sm:flex-row gap-3">
               <input
-                type="text"
+                type="number"
                 name="salaryMin"
                 placeholder="Min"
                 className={inputClass}
               />
               <input
-                type="text"
+                type="number"
                 name="salaryMax"
                 placeholder="Max"
                 className={inputClass}

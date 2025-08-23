@@ -47,6 +47,9 @@ const Navbar = () => {
                                     <Link to="/" className="hover:text-cyan-400 transition-colors flex items-center gap-2">
                                         <IoHome size={20} /> <span>Home</span>
                                     </Link>
+                                    <Link to="/allJobs" className="hover:text-cyan-400 transition-colors flex items-center gap-2">
+                                        <IoHome size={20} /> <span>All Jobs</span>
+                                    </Link>
                                     <Link to="/addjob" className="hover:text-cyan-400 transition-colors flex items-center gap-2">
                                         <IoIosAddCircle size={20} /> <span>Add Job</span>
                                     </Link>
@@ -93,6 +96,9 @@ const Navbar = () => {
                             <>
                                 <Link to="/" className="hover:text-cyan-400 transition-colors flex items-center gap-2">
                                     <IoHome /> <p>Home</p>
+                                </Link>
+                                <Link to="/allJobs" className="hover:text-cyan-400 transition-colors flex items-center gap-2">
+                                    <IoHome size={20} /> <span>All Jobs</span>
                                 </Link>
                                 <Link to="/addjob" className="hover:text-cyan-400 transition-colors flex items-center gap-2">
                                     <IoIosAddCircle /> <p>Add Job</p>
