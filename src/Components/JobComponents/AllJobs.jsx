@@ -4,10 +4,18 @@ import { Link, useLoaderData } from 'react-router-dom';
 import { motion } from "framer-motion";
 import job1 from '../../assets/job1.png';
 import job2 from '../../assets/job2.png';
+import UseJobs from '../Hooks/UseJobs';
 
 const AllJobs = () => {
-    const loderJob = useLoaderData([]);
-    const [jobs] = useState(loderJob);
+    // const loderJob = useLoaderData([]);
+    // const [jobs] = useState(loderJob);
+
+    const [sort, settSort] = useState(false)
+    const [search, setSearch]= useState("")
+    // console.log(sort,search)
+    const {jobs}=UseJobs(sort,search);
+
+
 
     return (
         <div>
@@ -44,6 +52,47 @@ const AllJobs = () => {
                     </div>
                 </div>
             </div>
+            {/* ----------------------- */}
+
+            <div className="w-11/12 mx-auto p-4 rounded-2xl bg-white/5 backdrop-blur-md shadow-lg">
+                <div className="flex  items-center sm:items-stretch justify-between gap-3 sm:gap-4">
+
+                    {/* Search Box */}
+                    <label className="flex items-center gap-2 w-full sm:w-1/2 bg-white/10 rounded-xl px-4 py-2 shadow-inner focus-within:ring-2 focus-within:ring-blue-400 transition-all">
+                        <svg
+                            className="h-5 w-5 text-gray-400"
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                        >
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <path d="m21 21-4.3-4.3"></path>
+                        </svg>
+                        <input
+                            type="search"
+                            onChange={(e)=>setSearch(e.target.value)}
+                            required
+                            placeholder="Search location..."
+                            className="w-full text-xs bg-transparent outline-none placeholder:text-gray-400 text-gray-200"
+                        />
+                    </label>
+
+                    {/* Button */}
+                    <button
+                        onClick={() => settSort(!sort)}
+                        className={`w-full sm:w-auto text-xs px-2 py-2 rounded-xl font-medium transition-all shadow-md ${sort
+                                ? "bg-gradient-to-r from-blue-500 to-indigo-600 text-white hover:opacity-90"
+                                : "bg-white/10 text-gray-200 hover:bg-white/20"
+                            }`}
+                    >
+                        {sort ? "Sorted By Salary" : "Sort By Salary"}
+                    </button>
+                </div>
+            </div>
+
+
 
             {/* Jobs Grid */}
             <div className="w-11/12 mx-auto mt-8 sm:mt-12 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">

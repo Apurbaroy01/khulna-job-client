@@ -12,7 +12,7 @@ import AddJob from "./Components/MyPost.jsx/AddJob";
 import MyPost from "./Components/MyPost.jsx/MyPost";
 import ViewApplication from "./Components/MyPost.jsx/viewApplication";
 import ViewApplicationDetails from "./Components/MyPost.jsx/ViewApplicationDetails";
-import MoreAllJobs from "./Components/MoreAllJobs/MoreAllJobs";
+
 
 
 
@@ -28,16 +28,12 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <AllJobs></AllJobs>,
-        loader: () => fetch('https://khula-job-server.vercel.app/jobs')
       },
       {
         path: 'register',
         element: <Register></Register>
       },
-      {
-        path: 'allJobs',
-        element: <MoreAllJobs></MoreAllJobs>
-      },
+      
       {
         path: 'login',
         element: <Login></Login>
